@@ -1,0 +1,26 @@
+{
+  "name": "mama_kitchen_food_app-",
+  "version": "1.0.0",
+  "description": "Mama's Kitchen ",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yeshashah26/react-Practice-Project.git"
+  },
+  "author": "Yesha Shah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yeshashah26/react-Practice-Project/issues"
+  },
+  "homepage": "https://github.com/Yeshashah26/react-Practice-Project#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}

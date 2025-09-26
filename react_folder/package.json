@@ -1,0 +1,26 @@
+{
+  "name": "react_folder",
+  "version": "1.0.0",
+  "description": "react Practice Work ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yeshashah26/react-Practice-Project.git"
+  },
+  "author": "Yesha Shah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yeshashah26/react-Practice-Project/issues"
+  },
+  "homepage": "https://github.com/Yeshashah26/react-Practice-Project#readme",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}
