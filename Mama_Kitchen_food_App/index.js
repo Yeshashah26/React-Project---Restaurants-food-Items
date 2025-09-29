@@ -1,33 +1,18 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom/client"; 
 import App from "./src/App.jsx";
-import Aboutus from "./src/component/Aboutus.jsx";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { BrowserRouter } from "react-router-dom";
+import Aboutus from "./src/component/Aboutus";
+import Contactus from "./src/component/Contactus";
+import Cart from "./src/component/Cart"
+import { createBrowserRouter, RouterProvider } from "react-router";
 
-// ReactDOM.createRoot(root).render(
-//   <BrowserRouter>
-//     <App />
-//   </BrowserRouter>
-// )
+const appRoute = createBrowserRouter([
+  {path: "/", element: <App />},
+  {path: "/Aboutus", element: <Aboutus />},
+  {path: "/Contactus", element: <Contactus />},
+  {path: "/Cart", element: <Cart />}
+]);
 
-const root = createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <StrictMode>
-    <App />
-    {/* <RouterProvider router='<AppRouter />' /> */}
-  </StrictMode>
+  <RouterProvider router={appRoute} />
 )
-
-
-// const AppRouter = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//   },
-//   {
-//     path: "/aboutus",
-//     element: <Aboutus />,
-//   }
-// ])
