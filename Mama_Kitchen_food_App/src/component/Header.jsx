@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router";
 
 const Header = ({ listOfRestaurants, setFilteredRestaurants }) => {
-  console.log("**......Header......**")
+  // console.log("**......Header......**")
   const [btnText, setBtnText] = useState("Login");
   const [searchText, setSearchText] = useState("");
 
   // if the dependence array is empty, then useEffect will run each everytime the Header Component will render 
   // if the dependence array is [], then useEffect will run only once
   // if the dependence array is [btnText], then useEffect will be only run when there is a change in the state of [btnText]
-  useEffect(() =>{
-    console.log("Effect Called");
-  }, [ ])
   const handleSearch = () => {
     const filtered = listOfRestaurants.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -42,10 +40,10 @@ const Header = ({ listOfRestaurants, setFilteredRestaurants }) => {
       </div>
       <div className="nav-Items">
         <ul>
-          <li>Home</li>
-          <li>Cart</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/cart">Cart</Link></li>
+          <li><Link to="/aboutus">About Us</Link></li>
+          <li><Link to="/contactus">Contact Us</Link></li>
           <li>
             <button
               className="login"
