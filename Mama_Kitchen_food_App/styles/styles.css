@@ -171,3 +171,30 @@
     height: 1rem;
     margin-left: 1rem;
 }
+
+/* Restaurant Menu css*/
+.restMenuItem{
+    margin-left: 20rem;
+}
+/* .restMenuHeader{
+    
+} */
+.restName{
+    font-style: oblique;
+    color:#000000eb;
+}
+.restdetails{
+    color:#000000b6;
+}
+/* Menu Item CSS */
+.restMenuItemBody{
+    border: solid 1px #c7c4c44c;
+    border-radius: 20px;
+    padding: 2rem;
+    justify-content: center;
+    width: 55rem;
+}
+
+.itemName{
+    color:#000000cf
+}

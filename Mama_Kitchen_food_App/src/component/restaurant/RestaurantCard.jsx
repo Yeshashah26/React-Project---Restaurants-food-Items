@@ -1,4 +1,4 @@
-import urlList from "../utilitise/url.js"
+import imageUrl from "../../utilitise/imageUrl.js"
 
 const RestaurantCard = (props) => {
     const {resData} = props;
@@ -8,7 +8,7 @@ const RestaurantCard = (props) => {
         <>
         { 
             <div className="res-card" key={id}>
-                <img src={urlList+cloudinaryImageId} id="card-img" alt="image"/>
+                <img src={imageUrl+cloudinaryImageId} id="card-img" alt="image"/>
                 <div className="res-card-content">
                     <h3 className="card-title">{name}</h3>
                     <div className="rating">{avgRating} stars</div>

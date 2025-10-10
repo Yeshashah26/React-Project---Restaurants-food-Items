@@ -1,18 +1,23 @@
-import { createBrowserRouter } from "react-router";
-import Aboutus from "./src/component/pages/Aboutus";
-import ContactUs from "./src/component/pages/Contactus";
-import Cart from "./src/component/pages/Cart";
-import Error from "./src/component/common/Error";
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App"
+import ApiData from "../api/ApiData";
+import Body from "../component/restaurant/Body";
+import Aboutus from "../component/pages/Aboutus";
+import ContactUs from "../component/pages/Contactus";
+import Cart from "../component/pages/Cart";
+import Error from "../component/common/Error";
 
-const AppRoutes = () =>{
-    const myroutes = createBrowserRouter([
+  
+  const myroutes = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <ApiData />,
+    errorElement: <Error />,
     children:[
       // {
-      //   path: "/",
-      //   element: <Body filteredRestaurants={filteredRestaurants} setFilteredRestaurants={setFilteredRestaurants} />,
+      //   index: true,
+      //   // element: <Body />,
+      // element: <Body filteredRestaurants={filteredRestaurants} setFilteredRestaurants={setFilteredRestaurants} />,
       // },
       {
         path: "/aboutus",
@@ -27,10 +32,7 @@ const AppRoutes = () =>{
         element: <Cart />,
       }
     ],
-    errorElement: <Error />
   },
     ])
-    return {myroutes}
-}
-
-export default AppRoutes;
+console.log("AppROutes.jsx");
+export default myroutes;

@@ -1,20 +1,30 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+import { useRestaurants } from "../../api/RestaurantProvider"; 
 
-const Header = ({ listOfRestaurants, setFilteredRestaurants }) => {
-  // console.log("**......Header......**")
+const Header = () => {
+  console.log("Header 1"); // Debugging: Remove in production
+
   const [btnText, setBtnText] = useState("Login");
   const [searchText, setSearchText] = useState("");
 
-  // if the dependence array is empty, then useEffect will run each everytime the Header Component will render 
-  // if the dependence array is [], then useEffect will run only once
-  // if the dependence array is [btnText], then useEffect will be only run when there is a change in the state of [btnText]
-  const handleSearch = () => {
-    const filtered = listOfRestaurants.filter((res) =>
-      res.info.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setFilteredRestaurants(filtered);
+  const { listOfRestaurants, setFilteredRestaurants, loading } = useRestaurants();
+
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchText(query);
+
+    if (query === "") {
+      setFilteredRestaurants(listOfRestaurants);
+    } else {
+      const filtered = listOfRestaurants.filter((restaurant) =>
+        restaurant.info?.name?.toLowerCase().includes(query)
+      );
+      setFilteredRestaurants(filtered);
+    }
   };
+
+  console.log("Header 2"); // Debugging
 
   return (
     <div className="header">
@@ -32,11 +42,15 @@ const Header = ({ listOfRestaurants, setFilteredRestaurants }) => {
           type="text"
           className="search-textbox"
           value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={handleSearch}  
+          placeholder="Search restaurants..."
+          disabled={loading} 
         />
-        <button className="search-button" onClick={handleSearch}>
+        {/* Optional: Search Button
+        <button className="search-button" onClick={handleSearch} disabled={loading}>
           Search
         </button>
+        */}
       </div>
       <div className="nav-Items">
         <ul>
