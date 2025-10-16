@@ -4,8 +4,8 @@
   "description": "Mama's Kitchen ",
   "scripts": {
     "test": "jest",
-    "dev": "vite",
-    "preview": "vite preview"
+    "start": "parcel index.html",
+    "clean": "rimraf .parcel-cache dist"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,8 @@
   },
   "homepage": "https://github.com/Yeshashah26/react-Practice-Project#readme",
   "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.4",
-    "rimraf": "^6.0.1",
-    "vite": "^7.1.10"
+    "parcel": "^2.13.3",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
     "react": "^19.1.1",
