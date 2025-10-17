@@ -58,6 +58,7 @@ const Header = () => {
           <li><Link to="/cart">Cart</Link></li>
           <li><Link to="/aboutus">About Us</Link></li>
           <li><Link to="/contactus">Contact Us</Link></li>
+          <li><Link to="/restaurant/:resId">Restaurant Menu</Link></li>
           <li>
             <button
               className="login"
