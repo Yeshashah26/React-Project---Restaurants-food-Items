@@ -51,18 +51,7 @@
     border: 2px dotted #b9b6b396;
     outline: none;
 }   
-.search-button{
-    border: 1px solid #b9b6b36b;
-    border-radius: 10px ;
-    font-size: medium;
-    width: 5rem;
-    height: 2.5rem;
-    font-family:cursive;
-    cursor: pointer;
-}
-.search-button:hover{
-    box-shadow: 1px 1px 1px rgba(205, 205, 202, 0.726);
-}
+rem
 .login{
     border: 1px solid #b9b6b36b;
     border-radius: 10px ;
@@ -128,6 +117,34 @@
 
 
 /* Shimmer Styles */
+.shimmer-header{
+    display: flex;
+    margin-bottom:2rem;
+}
+.shimmer-logo{
+    width: 7rem;
+    height: 5.5rem;
+    background-color: rgb(239, 233, 233);
+    border-radius: 0.5rem;
+}
+.shimmer-searchbar{
+    width: 25rem;
+    height: 2.5rem;
+    margin-left: 15rem;
+    margin-right: 9rem;
+    margin-top: 2.5rem;
+    background-color: rgb(239, 233, 233);
+    border-radius: 5px;
+}
+.shimmer-nav-item{
+    width: 2.9rem;
+    height: 2.5rem;
+    margin-top: 2.5rem;
+    margin-left: 1.5rem;
+    background-color: rgb(239, 233, 233);
+    border-radius: 0.6rem;
+    padding: 0px 10px;
+}
 .topRated-shimmer{
     margin-left: 10rem;
     width: 13rem;

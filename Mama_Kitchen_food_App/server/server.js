@@ -9,10 +9,11 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/api/swiggy", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
+    const restaurantId = req.params.id;
     const { lat = "23.0225", lng = "72.5714" } = req.query;
-    const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}`;
+    const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&retaurantId=${restaurantId}`;
     const response = await axios.get(url, {
       headers: {
         "User-Agent":
