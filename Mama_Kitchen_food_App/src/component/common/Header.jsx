@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRestaurants } from "../../api/RestaurantProvider"; 
+import "../../../styles/Header.css"
+import ButtonComponent from "./ButtonComponent";
 
 const Header = () => {
-  console.log("Header 1"); // Debugging: Remove in production
+
 
   const [btnText, setBtnText] = useState("Login");
   const [searchText, setSearchText] = useState("");
@@ -23,9 +25,6 @@ const Header = () => {
       setFilteredRestaurants(filtered);
     }
   };
-
-  console.log("Header 2"); // Debugging
-
   return (
     <div className="header">
       <div className="logo-container">
@@ -60,14 +59,12 @@ const Header = () => {
           <li><Link to="/contactus">Contact Us</Link></li>
           <li><Link to="/restaurant/:resId">Restaurant Menu</Link></li>
           <li>
-            <button
-              className="login"
+            <ButtonComponent
+              label={btnText}
               onClick={() =>
                 btnText === "Login" ? setBtnText("Logout") : setBtnText("Login")
               }
-            >
-              {btnText}
-            </button>
+            />
           </li>
         </ul>
       </div>
