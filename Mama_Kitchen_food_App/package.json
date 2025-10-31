@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Mama's Kitchen ",
   "scripts": {
-    "type": "module",
     "test": "jest",
     "dev": "vite",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "type": "module"
   },
   "repository": {
     "type": "git",

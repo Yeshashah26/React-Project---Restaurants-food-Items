@@ -43,9 +43,9 @@ const Body = () => {
   return (
     <main className="max-w-7xl mx-auto px-6 py-8">
       {/* Filter Section */}
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold text-gray-800">
-          Explore Restaurants
+      <div className="flex justify-between items-center mb-6 -mt-5">
+        <h2 className="text-2xl font-bold text-gray-800 font-sans">
+         Explore Restaurants 
         </h2>
         <ButtonComponent
           label="Top Rated Restaurants"

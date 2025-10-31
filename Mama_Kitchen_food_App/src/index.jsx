@@ -8,6 +8,7 @@ import ContactUs from "./component/pages/Contactus";
 import RestaurantMenu from './component/restaurant/RestaurantMenu';
 import Cart from "./component/pages/Cart";
 import Error from "./component/common/Error";
+import Login from "./component/common/Login"
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       }
     ],
   },
