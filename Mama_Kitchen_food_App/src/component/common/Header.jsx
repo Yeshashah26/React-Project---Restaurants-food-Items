@@ -55,7 +55,7 @@ const Header = () => {
         <nav className="hidden md:flex items-center gap-6">
           <ul className="flex items-center gap-6 text-gray-900 font-semibold text-lg">
             <NavItems to="/" navname="Home" />
-            <NavItems to="/aboutus" navname="About Us" />
+            <NavItems to="/profile" navname="Profile" />
             <NavItems to="/contactus" navname="Contact Us" />
           </ul>
 

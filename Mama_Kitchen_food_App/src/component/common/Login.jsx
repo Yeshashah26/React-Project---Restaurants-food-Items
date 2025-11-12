@@ -13,10 +13,14 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ emailId, password }),
       });
-
+      console.log("Response: ",res)
       const data = await res.json();
+
       if (res.ok) {
+        localStorage.setItem("token",data.token)
         setMessage(`✔ ${data.message}`);
+        console.log("token...",data.token)
+        window.location.href = "/profile";
       } else {
         setMessage(`❌ ${data.error}`);
       }

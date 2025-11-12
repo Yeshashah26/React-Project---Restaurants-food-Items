@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { RestaurantProvider } from "./api/RestaurantProvider"; 
 import App from "./App"; 
 import Body from "./component/restaurant/Body"; 
-import Aboutus from "./component/pages/Aboutus";
+import Profile from "./component/pages/Profile";
 import ContactUs from "./component/pages/Contactus";
 import RestaurantMenu from './component/restaurant/RestaurantMenu';
 import Cart from "./component/pages/Cart";
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
         element: <Body />,
       },
       {
-        path: "/aboutus",
-        element: <Aboutus />,
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/contactus",
