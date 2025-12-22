@@ -12,7 +12,7 @@ const PORT = 5000;
 (async () => { 
 const SECRET_KEY = "Privatekey";
 
-  const hashedPassword = await bcrypt.hash("123456",10);
+  const hashedPassword = await bcrypt.hash("123456",10); // hash(): secures hash passwords:-> hash("Password", salt )
     
   const USER = {
       emailid: "yeshashah@gmail.com", 
@@ -46,13 +46,13 @@ const SECRET_KEY = "Privatekey";
 
     app.get("/", async (req, res) => {
       try{
-        const { lat = "23.0225", lng = "72.5714" } = req.query;
+        // Fetching Restaurant Data
+        let { lat = "23.0225", lng = "72.5714" } = req.query;
         const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}`;
         const response = await axios.get(url, {
           headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            Accept: "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "application/json",
           },
         });
 
@@ -76,16 +76,41 @@ const SECRET_KEY = "Privatekey";
       }
 
       const isMatch = await bcrypt.compare( password, USER.password );
+      console.log(isMatch)
       
       if(emailId === USER.emailid && isMatch) {
         //creates Token
         const token = jwt.sign({ emailId }, SECRET_KEY, {expiresIn: "1h"});
-        console.log("token: ",token);
         res.status(200).json({ message: "Login successful!", token});
       } else {
         res.status(403).json({ error: "Invalid EmailId or password" });
       }
     });
+
+    app.get("/restaurant/:resId", async(req, res) => {
+      try{
+        const { resId } = req.params;
+        const { lat = "22.3147695", lng = "70.8022415" } = req.query;
+        const MenuUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resId}`
+        const response = await axios.get(MenuUrl, {
+          headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "application/json",
+            "Referer": "www.swiggy.com",
+          },
+        });
+        console.log("Menu Data: ",response)  
+        if(!response.ok)
+        {
+          return res.status(500).json({error: "Opps....., Issue in Rendering"})
+        }
+        const data = await response.json();
+        return res.status(200).json(data);
+      }catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: "Failed to fetch restaurant data" });
+      }
+    })
 
     app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
 })(); // here () -> call the function immediatelty (Immediately Invoked Function Expression (IIFE))

@@ -1,35 +1,34 @@
 import { useEffect,useState } from "react";
-import "../../../styles/styles.css";
-import Shimmer from "../common/Shimmer";
+import { useParams } from "react-router";
+// import "../../../styles/styles.css";
+// import Shimmer from "../common/Shimmer";
 
 
 const RestaurantMenu = () => {
-const [ restaurantMenuData, setRestaurantMenuData ] = useState(null);
+  const { resId } = useParams();
+  const [ restaurantMenuData, setRestaurantMenuData ] = useState();
 
+console.log("ResId: " ,{resId})
 
-useEffect(()=>{
-    fetchMenuData();
-},[]);
+  useEffect(()=>{
+      fetchMenuData();
+  },[resId]);
 
-const fetchMenuData = async () =>{
-  try{
-    const data = await fetch("http://localhost:5000/");
-    if(!data.ok)
-    {
-      const errorText = await data.text()
-      throw new Error(`HTML :${data.status}. Message: ${errorText}`)
+  const fetchMenuData = async () =>{
+    try{
+      const data = await fetch(`http://localhost:5000/restaurant/${resId}`);
+      console.log("Data: ",data) 
+      const jsonContent = await data.json();
+      setRestaurantMenuData(jsonContent.data);
     }
-    const jsonContent = await data.json();
-    setRestaurantMenuData(jsonContent);
-  }
-  catch(error){
-    console.log("Error: ",error);
-  }
-};
-  if (restaurantMenuData === null) return <Shimmer />;
-  console.log("Data from global varible: ", restaurantMenuData);
-  if (!restaurantMenuData || !restaurantMenuData.data.cards) {
-  return <p>Loading ...</p>;
+    catch(error){
+      console.log("Frontend fetch",error);
+    }
+  };
+  // if (restaurantMenuData === null) return <Shimmer />;
+  // console.log("Data from global varible: ", restaurantMenuData);
+  if (!restaurantMenuData) {
+    return <p>Loading ...</p>;
   }
   const { name,areaName, avgRating, costForTwo, locality } = restaurantMenuData?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.[1]?.info;
   const { cuisines } = restaurantMenuData?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.[1]?.info?.cuisines;
@@ -39,7 +38,7 @@ const fetchMenuData = async () =>{
  return (<>
   <div className="restMenuItem">
     <div className="restMenuHeader">
-      <h1 className="restName">{name}</h1>
+      <h1 className="restName">Name: {name}</h1>
       <p className="restdetails">
         Rating: {avgRating} | {costForTwo} <br></br>
         {cuisines} 
