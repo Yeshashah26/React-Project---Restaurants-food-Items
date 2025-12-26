@@ -1,0 +1,25 @@
+{
+  "id": 984727,
+  "name": "Mama Kitchen",
+  "cuisines": ["Indian", "Punjabi"],
+  "avgRating": 4.5,
+  "ratingCount": 5,
+  "categories": [
+    {
+      "id": 1,
+      "title": "Starters",
+      "items": [
+        { "id": 101, "name": "Paneer Tikka", "price": 220 },
+        { "id": 102, "name": "Veg Manchurian", "price": 180 }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Main Course",
+      "items": [
+        { "id": 201, "name": "Butter Paneer", "price": 260 },
+        { "id": 202, "name": "Dal Makhani", "price": 240 }
+      ]
+    }
+  ]
+}

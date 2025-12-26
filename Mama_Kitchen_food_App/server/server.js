@@ -5,6 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
+import mock_menu_data from "./mock_menu_data.json" with {type : "json"}
 
 const app = express();
 const PORT = 5000;
@@ -90,22 +91,28 @@ const SECRET_KEY = "Privatekey";
     app.get("/restaurant/:resId", async(req, res) => {
       try{
         const { resId } = req.params;
-        const { lat = "22.3147695", lng = "70.8022415" } = req.query;
-        const MenuUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resId}`
-        const response = await axios.get(MenuUrl, {
-          headers: {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Accept": "application/json",
-            "Referer": "www.swiggy.com",
-          },
-        });
-        console.log("Menu Data: ",response)  
-        if(!response.ok)
-        {
-          return res.status(500).json({error: "Opps....., Issue in Rendering"})
+        // const { lat = "22.3147695", lng = "70.8022415" } = req.query;
+        // const MenuUrl = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resId}`
+        // const response = await axios.get(MenuUrl, {
+        //   headers: {
+        //     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        //     "Accept": "application/json",
+        //     "Referer": "www.swiggy.com",
+        //   },
+        // });
+
+        if(resId == mock_menu_data.id){
+          return res.status(200).json(mock_menu_data) 
+        }else{
+          return res.status(400).json({error: "Menu data is not fetched"})
         }
-        const data = await response.json();
-        return res.status(200).json(data);
+        // console.log("Menu Data: ",response)  
+        // if(!response.ok)
+        // {
+        //   return res.status(500).json({error: "Opps....., Issue in Rendering"})
+        // }
+        // const data = await response.json();
+        // return res.status(200).json(data);
       }catch (err) {
         console.error(err.message);
         res.status(500).json({ error: "Failed to fetch restaurant data" });
