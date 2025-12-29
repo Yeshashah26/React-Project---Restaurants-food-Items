@@ -23,6 +23,8 @@ const RestaurantMenu = () => {
   if (!restaurantMenuData) {
     return <p>Loading ...</p>;
   }
+  const item =  restaurantMenuData?.categories;
+  console.log("restItem: ",item);
  return (<>
  <div className="restMenu max-w-9xl mx-auto bg-white p-2 mt-4">
   <div className="restMenuHeader">
@@ -67,7 +69,9 @@ const RestaurantMenu = () => {
     </div>
   </div>
     </div>
-    <MenuCard item={restaurantMenuData.categories.items} />
+    {item.map(items => (
+      <MenuCard key={items.id} item={items} />
+    ))}
   </div>
 </div>
 </>

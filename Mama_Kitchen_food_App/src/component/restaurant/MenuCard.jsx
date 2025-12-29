@@ -1,29 +1,32 @@
 import { useEffect, useState } from "react"
 
-const MenuCard = ({ item }) => {
-    // const {id, name, price} = menuData.categories.items;
+const MenuCard = ({ item }) => { 
+    const {name, price} = item?.items?.[0];
+    const Add = () => {
+      window.location.href = "/cart";
+    }
     return(
         <>
-             <div className="p-4 border rounded-lg shadow-sm flex justify-between">
-      <div>
-        <h3 className="font-semibold text-lg">
-          {item.name}
-        </h3>
+        <div className="ml-80 ">
+            <div className="p-4 max-w-4xl border border-gray-300 rounded-lg flex justify-between hover:-translate-y-1 transition duration-300 border border-gray-500 cursor-pointer">
+            <div>
+              <h3 className="font-semibold text-lg">
+                {name}
+                {/* {id} */}
+              </h3>
+          
+              <p className="text-sm text-gray-600">
+                ₹{price}
+              </p>
+            </div>
 
-        <p className="text-sm text-gray-600">
-          ₹{item.price}
-        </p>
-
-        <p className="text-sm text-gray-500">
-          {item.id}
-        </p>
-      </div>
-
-      <button className="bg-green-500 text-white px-4 py-2 rounded">
-        Add
-      </button>
-    </div>
-
+            <button className="bg-yellow-600 text-white px-4 py-2 rounded" onClick={Add}>
+              Add To Cart
+            </button>
+          </div>
+          <br></br>
+        </div>
+          
         </>
     )
 }
